@@ -2,9 +2,11 @@ import { ApiService } from './data'
 import { NgModule, Optional, SkipSelf, ModuleWithProviders } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { throwIfAlreadyLoaded } from './module-import-guard';
+import { TodoService } from './data/todo-local-storage-mock.service';
 
 const DATA_SERVICES = [
-    ApiService
+    ApiService,
+    TodoService
 ]
 
 @NgModule({

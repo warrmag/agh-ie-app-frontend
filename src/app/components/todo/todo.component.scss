@@ -1,0 +1,31 @@
+:host {
+  flex: 0 1 calc(25% - 1em);
+}
+
+card-title {
+  input {
+    width: 100%;
+  }
+}
+
+.add-element {
+  margin-left: .5rem;
+}
+
+.element-icon {
+  color: red;
+}
+
+mat-list-item {
+  mat-icon {
+    order: 999;
+  }
+
+  mat-checkbox {
+    flex-grow: 9;
+
+    ::ng-deep .mat-checkbox-label {
+      white-space: normal;
+    }
+  }
+}

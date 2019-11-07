@@ -1,0 +1,43 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <mat-form-field class="example-full-width">
+                <input
+                    matInput
+                    placeholder="#{{todo.id}} Todo"
+                    [(ngModel)]="todo.title"
+                    (focusout)="updateTodo()"
+                >
+            </mat-form-field>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-list>
+            <mat-list-item *ngFor="let element of todo.elements">
+                <mat-checkbox [checked]="element.done" (change)="updateElement($event, element)">{{element.title}}</mat-checkbox>
+                <mat-icon
+                    matListIcon
+                    class="element-icon"
+                    (click)="removeElement(element)"
+                >remove</mat-icon>
+            </mat-list-item>
+            <mat-list-item>
+                <input
+                    matInput
+                    placeholder="New task"
+                    (keydown)="addElement($event)"
+                    class="add-element"
+                >
+            </mat-list-item>
+        </mat-list>
+    </mat-card-content>
+    <mat-card-actions>
+        <button
+            mat-icon-button
+            aria-label="Example icon-button with a heart icon"
+            (click)="removeTodo()"
+        >
+            <mat-icon>delete</mat-icon>
+        </button>
+    </mat-card-actions>
+</mat-card>

@@ -1,0 +1,12 @@
+<button
+    (click)="addNewTodo()"
+    mat-flat-button
+    color="primary"
+>Dodaj nową listę</button>
+
+<div class="cards">
+    <agh-app-todo
+        *ngFor="let todo of todos"
+        [todo]="todo"
+    ></agh-app-todo>
+</div>
