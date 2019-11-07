@@ -17,10 +17,18 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@agh-app/service": [
+        "src/app/@core/data/index.ts"
+      ],
+      "@agh-app/model": [
+        "src/app/@core/model/index.ts"
+      ]
+    },
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true
-  }
+  },
 }

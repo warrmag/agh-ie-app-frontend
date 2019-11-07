@@ -15,10 +15,4 @@
     "src/test.ts",
     "src/**/*.spec.ts"
   ],
-  "baseUrl": "./src",
-  "paths": {
-    "@agh/model": [
-      "app/@core/data/"
-    ]
-  },
 }
