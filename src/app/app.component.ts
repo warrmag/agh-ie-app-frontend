@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TodoService } from './@core/data/todo-local-storage-mock.service';
+import { TodoService } from './@core/data/todo.service';
 import { Todo } from '@agh-app/model';
 
 @Component({

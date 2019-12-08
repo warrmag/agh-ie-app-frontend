@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Todo, TodoElement } from '@agh-app/model';
-import { TodoService } from 'src/app/@core/data/todo-local-storage-mock.service';
+import { TodoService } from 'src/app/@core/data/todo.service';
+import {BehaviorSubject} from 'rxjs';
 
 @Component({
   selector: 'agh-app-todo',
@@ -26,13 +27,13 @@ export class TodoComponent implements OnInit {
 
   addElement(event) {
     console.log(event.keyCode, event.target.value);
-    if (event.keyCode == 13 && event.target.value.length > 0) {
+    if (event.keyCode === 13 && event.target.value.length > 1) {
 
       this.todoService.addTodoElement(this.todo, {
         id: undefined,
         title: event.target.value,
         done: false
-      });
+      }).subscribe(data => this.todo.elements.push(data)); // Sewo pokaż jak naprawić żeby linter nie wkurwiał
 
       event.target.value = '';
     }
@@ -44,7 +45,7 @@ export class TodoComponent implements OnInit {
 
   updateElement(event, element: TodoElement) {
     element.done = event.checked;
-    
+
     this.todoService.updateTodoElement(this.todo, element);
   }
 }

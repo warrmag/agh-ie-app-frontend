@@ -1,4 +1,4 @@
-import { Inject, Injectable } from "@angular/core";
+import { Inject, Injectable } from '@angular/core';
 import { TodoServiceInterface } from './todo-service.interface';
 import { Todo, TodoElement } from '@agh-app/model';
 import { Observable, BehaviorSubject } from 'rxjs';
@@ -74,12 +74,12 @@ export class TodoService implements TodoServiceInterface {
             id: id,
             title: element.title,
             done: false
-        })
+        });
 
 
         this.updateLocalStorage();
 
-        return new BehaviorSubject<Todo>(this.currentTodoList[this.getTodoIndex(todo)])
+        return new BehaviorSubject<Todo>(this.currentTodoList[this.getTodoIndex(todo)]);
     }
 
     removeTodoElement(todo: Todo, element: TodoElement): Observable<boolean> {

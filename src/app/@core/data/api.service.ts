@@ -1,14 +1,13 @@
 import { environment } from '../../../environments/environment';
-import { HttpClient, HttpParams } from '@angular/common/http';
-
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { Injectable } from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 
 @Injectable()
 export class ApiService {
     constructor(
-        private http: HttpClient,
+        @Inject(HttpClient) private http: HttpClient,
     ) { }
 
     private formatErrors(error: any) {
@@ -45,6 +44,7 @@ export class ApiService {
     }
 
     post(path: string, body: Object = {}, params: HttpParams = new HttpParams()): Observable<any> {
+
         return this.http
             .post(`${environment.apiUrl}${path}`, JSON.stringify(body), { params })
             .pipe(
