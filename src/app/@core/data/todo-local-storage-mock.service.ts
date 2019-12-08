@@ -124,7 +124,7 @@ export class TodoService implements TodoServiceInterface {
     private getTodoElementIndex(todo: Todo, element: TodoElement): number {
         let todoIndex = this.getTodoIndex(todo);
 
-        let currentTodo = this.currentTodoList[todoIndex].elements.find((todoElement: TodoElement) => todoElement.id == element.id)
+        let currentTodo = this.currentTodoList[todoIndex].elements.find((todoElement: TodoElement) => todoElement.id === element.id)
 
         return this.currentTodoList[todoIndex].elements.indexOf(currentTodo);
     }

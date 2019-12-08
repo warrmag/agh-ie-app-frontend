@@ -40,12 +40,22 @@ export class TodoComponent implements OnInit {
   }
 
   removeElement(element: TodoElement) {
-    this.todoService.removeTodoElement(this.todo, element);
+    let elementIndex = this.getTodoElementIndex(this.todo, element);
+
+    this.todoService.removeTodoElement(this.todo, element).subscribe(
+      _ => this.todo.elements.splice(elementIndex, 1)
+    );
   }
 
   updateElement(event, element: TodoElement) {
     element.done = event.checked;
 
     this.todoService.updateTodoElement(this.todo, element);
+  }
+
+
+  private getTodoElementIndex(todo: Todo, element: TodoElement): number {
+
+    return this.todo.elements.find((todoElement: TodoElement) => todoElement.id === element.id);
   }
 }

@@ -35,7 +35,7 @@ export class TodoService implements TodoServiceInterface {
     }
 
     public removeTodoElement(todo: Todo, element: TodoElement): Observable<boolean> {
-        return this.apiService.delete('/cards/' + todo.id + '/tasks/' + element.id).pipe(map(data => data));
+        return this.apiService.delete('/tasks/' + element.id).pipe(map(data => data));
     }
 
     public updateTodoElement(todo: Todo, element: TodoElement): Observable<Todo> {
