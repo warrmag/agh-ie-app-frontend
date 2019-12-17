@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+
+  frontend:
+    container_name: agh-pass-frontend
+    build:
+      context: .
+      dockerfile: Docker/Dockerfile
+    volumes:
+      - '.:/app'
+      - '/app/node_modules'
+    ports:
+      - '4200:4200'
