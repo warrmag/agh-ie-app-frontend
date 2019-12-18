@@ -40,11 +40,11 @@ export class TodoComponent implements OnInit {
   }
 
   removeElement(element: TodoElement) {
-    let elementIndex = this.getTodoElementIndex(this.todo, element);
+    // let elementIndex = this.getTodoElementIndex(this.todo, element);
 
-    this.todoService.removeTodoElement(this.todo, element).subscribe(
-      _ => this.todo.elements.splice(elementIndex, 1)
-    );
+    // this.todoService.removeTodoElement(this.todo, element).subscribe(
+    //   _ => this.todo.elements.splice(elementIndex, 1)
+    // );
   }
 
   updateElement(event, element: TodoElement) {

@@ -1,5 +1,5 @@
 export interface TodoElement {
-    id: string;
+    id: number;
     title: string;
     done: boolean;
 }

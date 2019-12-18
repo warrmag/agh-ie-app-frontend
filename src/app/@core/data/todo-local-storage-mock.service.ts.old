@@ -63,11 +63,11 @@ export class TodoService implements TodoServiceInterface {
         return new BehaviorSubject<Todo[]>(this.currentTodoList);
     }
 
-    addTodoElement(todo: Todo, element: TodoElement): Observable<Todo> {
+    addTodoElement(todo: Todo, element: TodoElement): Observable<TodoElement> {
         let id = 0;
 
         if (todo.elements.length > 0) {
-            id = todo.elements[todo.elements.length - 1].id + 1
+            id = todo.elements[todo.elements.length - 1].id + 1;
         }
 
         this.currentTodoList[this.getTodoIndex(todo)].elements.push({

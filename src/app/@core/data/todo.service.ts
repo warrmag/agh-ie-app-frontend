@@ -30,7 +30,7 @@ export class TodoService implements TodoServiceInterface {
         return this.apiService.get('/cards').pipe(map(data => data));
     }
 
-    public addTodoElement(todo: Todo, element: TodoElement): Observable<Todo> {
+    public addTodoElement(todo: Todo, element: TodoElement): Observable<TodoElement> {
         return this.apiService.post('/cards/' + todo.id + '/tasks', element).pipe(map(data => data));
     }
 
