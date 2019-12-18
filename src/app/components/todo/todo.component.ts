@@ -54,7 +54,7 @@ export class TodoComponent implements OnInit {
   }
 
 
-  private getTodoElementIndex(todo: Todo, element: TodoElement): number {
+  private getTodoElementIndex(todo: Todo, element: TodoElement) {
 
     return this.todo.elements.find((todoElement: TodoElement) => todoElement.id === element.id);
   }
