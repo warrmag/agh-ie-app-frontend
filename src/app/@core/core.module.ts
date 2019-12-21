@@ -4,10 +4,12 @@ import { CommonModule } from '@angular/common';
 import { throwIfAlreadyLoaded } from './module-import-guard';
 import { TodoService } from './data/todo.service';
 import {HttpClient, HttpClientModule, HttpHandler} from '@angular/common/http';
+import {SidebarService} from "./data/sidebar.service";
 
 const DATA_SERVICES = [
     ApiService,
-    TodoService
+    TodoService,
+    SidebarService
 ];
 
 @NgModule({
