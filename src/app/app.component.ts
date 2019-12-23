@@ -17,14 +17,13 @@ export class AppComponent {
       (todos: Todo[]) => {
         this.todos = todos;
       }
-    )
+    );
   }
-
   addNewTodo() {
     this.todoService.addTodo({
       id: undefined,
       title: '',
       elements: []
-    }).subscribe()
+    }).subscribe();
   }
 }
