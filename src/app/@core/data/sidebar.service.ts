@@ -1,9 +1,9 @@
-import {Inject, Injectable} from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ApiService } from '@agh-app/service';
+import { ApiService } from './api.service';
 import { map } from 'rxjs/operators';
-import {SidebarServiceInterface} from './sidebar-service.interface';
-import {Category} from "../model/category.model";
+import { SidebarServiceInterface } from './sidebar-service.interface';
+import { Category } from "../model/category.model";
 
 
 @Injectable()

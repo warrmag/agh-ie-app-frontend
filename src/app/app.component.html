@@ -1,12 +1,27 @@
-<button
-    (click)="addNewTodo()"
-    mat-flat-button
-    color="primary"
->Add new todo list</button>
-
-<div class="cards">
-    <agh-app-todo
-        *ngFor="let todo of todos"
-        [todo]="todo"
-    ></agh-app-todo>
-</div>
+<mat-drawer-container class="example-container">
+    <mat-drawer
+        mode="side"
+        [(opened)]="sidenavOpened"
+    >
+        <agh-app-categories-sidenav></agh-app-categories-sidenav>
+    </mat-drawer>
+    <mat-drawer-content>
+        <button
+            (click)="addNewTodo()"
+            mat-flat-button
+            color="primary"
+        >Add new todo list</button>
+        <button
+            (click)="toggleSidenav()"
+            mat-flat-button
+            color="info"
+            class="button-toggle-sidenav"
+        >Categories</button>
+        <div class="cards">
+            <agh-app-todo
+                *ngFor="let todo of todos"
+                [todo]="todo"
+            ></agh-app-todo>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

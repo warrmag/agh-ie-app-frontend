@@ -1,7 +1,7 @@
 import {Inject, Injectable} from '@angular/core';
 import { Todo, TodoElement } from '@agh-app/model';
 import { Observable } from 'rxjs';
-import { ApiService } from '@agh-app/service';
+import { ApiService } from './api.service';
 import { map } from 'rxjs/operators';
 import { TodoServiceInterface } from './todo-service.interface';
 

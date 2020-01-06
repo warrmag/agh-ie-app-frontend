@@ -12,6 +12,8 @@ export class AppComponent {
 
   todos: Todo[] = [];
 
+  sidenavOpened: boolean = false;
+
   ngOnInit() {
     this.todoService.getAllTodo().subscribe(
       (todos: Todo[]) => {
@@ -19,11 +21,17 @@ export class AppComponent {
       }
     );
   }
+
   addNewTodo() {
     this.todoService.addTodo({
       id: undefined,
       title: '',
       elements: []
     }).subscribe();
+  }
+
+  toggleSidenav() {
+    console.log(this.sidenavOpened);
+    this.sidenavOpened = !this.sidenavOpened;
   }
 }

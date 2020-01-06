@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Todo, TodoElement } from '@agh-app/model';
-import { TodoService } from 'src/app/@core/data/todo.service';
-import {BehaviorSubject} from 'rxjs';
+import { TodoService } from '@agh-app/service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'agh-app-todo',

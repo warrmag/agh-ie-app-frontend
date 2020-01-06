@@ -1,13 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
-import {Category} from "../../@core/model/category.model";
-import {SidebarServiceInterface} from "../../@core/data/sidebar-service.interface";
+import { Component, OnInit } from '@angular/core';
+import { Category } from "@agh-app/model";
+import { SidebarService } from "@agh-app/service";
 
 @Component({
-  selector: 'agh-app-todo',
+  selector: 'agh-app-categories-sidenav',
   templateUrl: './sidebar.component.html'
 })
 export class SidebarComponent implements OnInit {
-  constructor(private sidebarService: SidebarServiceInterface) { }
+  constructor(private sidebarService: SidebarService) { }
 
   categories: Category[] = [];
 
