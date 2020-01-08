@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { TodoService } from './@core/data/todo.service';
 import { Todo } from '@agh-app/model';
+import { SidebarService, TodoService } from '@agh-app/service';
 
 @Component({
   selector: 'app-root',
@@ -8,14 +8,14 @@ import { Todo } from '@agh-app/model';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(private todoService: TodoService) { }
+  constructor(private sidebarService: SidebarService, private todoService: TodoService) { }
 
   todos: Todo[] = [];
 
   sidenavOpened: boolean = false;
 
   ngOnInit() {
-    this.todoService.getAllTodo().subscribe(
+    this.sidebarService.getCardsByCategory().subscribe(
       (todos: Todo[]) => {
         this.todos = todos;
       }
