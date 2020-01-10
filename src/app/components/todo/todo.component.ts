@@ -33,18 +33,18 @@ export class TodoComponent implements OnInit {
         id: undefined,
         title: event.target.value,
         done: false
-      }).subscribe(data => this.todo.elements.push(data)); // Sewo pokaż jak naprawić żeby linter nie wkurwiał
+      }).subscribe((data: TodoElement) => { this.todo.elements.push(data) }); // Sewo pokaż jak naprawić żeby linter nie wkurwiał
 
       event.target.value = '';
     }
   }
 
   removeElement(element: TodoElement) {
-    // let elementIndex = this.getTodoElementIndex(this.todo, element);
+    let elementIndex = this.getTodoElementIndex(this.todo, element);
 
-    // this.todoService.removeTodoElement(this.todo, element).subscribe(
-    //   _ => this.todo.elements.splice(elementIndex, 1)
-    // );
+    this.todoService.removeTodoElement(this.todo, element).subscribe(
+      () => this.todo.elements.splice(elementIndex, 1)
+    );
   }
 
   updateElement(event, element: TodoElement) {
@@ -55,7 +55,6 @@ export class TodoComponent implements OnInit {
 
 
   private getTodoElementIndex(todo: Todo, element: TodoElement) {
-
-    return this.todo.elements.find((todoElement: TodoElement) => todoElement.id === element.id);
+    return this.todo.elements.findIndex((todoElement: TodoElement) => todoElement.id === element.id);
   }
 }
