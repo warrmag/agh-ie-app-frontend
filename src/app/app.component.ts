@@ -31,7 +31,10 @@ export class AppComponent {
   }
 
   toggleSidenav() {
-    console.log(this.sidenavOpened);
     this.sidenavOpened = !this.sidenavOpened;
+  }
+
+  closeSidenav(event) {
+    this.sidenavOpened = false;
   }
 }
