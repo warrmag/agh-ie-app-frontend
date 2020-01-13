@@ -44,5 +44,9 @@ export class SidebarService implements SidebarServiceInterface {
       )
     )
   }
+
+  public addCartToCategory(card: Todo, category: Category): Observable<Todo> {
+    return this.apiService.post('/categories/' + category.id + '/cards', card).pipe(map(data => data));
+  }
 }
 

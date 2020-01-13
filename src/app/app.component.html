@@ -3,10 +3,14 @@
     <agh-app-categories-sidenav (optionSelected)="closeSidenav($event)"></agh-app-categories-sidenav>
   </mat-drawer>
   <mat-drawer-content>
-    <button (click)="addNewTodo()" mat-flat-button color="primary">Add new todo list</button>
+    <button [matMenuTriggerFor]="menu" mat-flat-button color="primary">Add new todo list</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item *ngFor="let category of categories" (click)="addNewTodo(category)">{{category.title}}</button>
+    </mat-menu>
+
     <button (click)="toggleSidenav()" mat-flat-button color="info" class="button-toggle-sidenav">Categories</button>
     <div class="cards">
-      <agh-app-todo *ngFor="let todo of todos" [todo]="todo"></agh-app-todo>
+      <agh-app-todo *ngFor="let todo of todos" [todo]="todo" (cardDeleted)="removeCard(todo)"></agh-app-todo>
     </div>
   </mat-drawer-content>
 </mat-drawer-container>

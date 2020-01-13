@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Todo } from '@agh-app/model';
+import { Todo, Category } from '@agh-app/model';
 import { SidebarService, TodoService } from '@agh-app/service';
 
 @Component({
@@ -11,6 +11,7 @@ export class AppComponent {
   constructor(private sidebarService: SidebarService, private todoService: TodoService) { }
 
   todos: Todo[] = [];
+  categories: Category[] = [];
 
   sidenavOpened: boolean = false;
 
@@ -20,21 +21,36 @@ export class AppComponent {
         this.todos = todos;
       }
     );
+
+    this.sidebarService.getAllCategories().subscribe(
+      (categories: Category[]) => {
+        this.categories = categories;
+      }
+    )
   }
 
-  addNewTodo() {
-    this.todoService.addTodo({
+  addNewTodo(category: Category) {
+    this.sidebarService.addCartToCategory({
       id: undefined,
-      title: '',
-      elements: []
-    }).subscribe();
+      title: 'No title'
+    }, category).subscribe(
+      () => {
+        this.sidebarService.setCurrentCategory(category)
+      }
+    );
   }
 
   toggleSidenav() {
     this.sidenavOpened = !this.sidenavOpened;
   }
 
-  closeSidenav(event) {
+  closeSidenav() {
     this.sidenavOpened = false;
+  }
+
+  removeCard(card: Todo) {
+    this.todos = this.todos.filter(
+      todo => todo.id !== card.id
+    )
   }
 }
