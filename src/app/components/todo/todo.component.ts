@@ -1,23 +1,27 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Todo, TodoElement } from '@agh-app/model';
-import { TodoService } from 'src/app/@core/data/todo-local-storage-mock.service';
+import { TodoService } from '@agh-app/service';
 
 @Component({
   selector: 'agh-app-todo',
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.scss']
 })
-export class TodoComponent implements OnInit {
+export class TodoComponent {
   @Input()
   todo: Todo;
 
+  @Output()
+  cardDeleted: EventEmitter<boolean> = new EventEmitter();
+
   constructor(private todoService: TodoService) { }
 
-  ngOnInit() {
-  }
-
   removeTodo() {
-    this.todoService.removeTodo(this.todo).subscribe();
+    this.todoService.removeTodo(this.todo).subscribe(
+      () => {
+        this.cardDeleted.emit(true);
+      }
+    );
   }
 
   updateTodo() {
@@ -26,25 +30,36 @@ export class TodoComponent implements OnInit {
 
   addElement(event) {
     console.log(event.keyCode, event.target.value);
-    if (event.keyCode == 13 && event.target.value.length > 0) {
+    if (event.keyCode === 13 && event.target.value.length > 1) {
 
       this.todoService.addTodoElement(this.todo, {
         id: undefined,
         title: event.target.value,
         done: false
-      });
+      }).subscribe((data: TodoElement) => { this.todo.elements.push(data) });
 
       event.target.value = '';
     }
   }
 
   removeElement(element: TodoElement) {
-    this.todoService.removeTodoElement(this.todo, element);
+    let elementIndex = this.getTodoElementIndex(this.todo, element);
+
+    this.todoService.removeTodoElement(this.todo, element).subscribe(
+      () => this.todo.elements.splice(elementIndex, 1)
+    );
   }
 
   updateElement(event, element: TodoElement) {
     element.done = event.checked;
-    
+
     this.todoService.updateTodoElement(this.todo, element);
   }
+
+
+  private getTodoElementIndex(todo: Todo, element: TodoElement) {
+    return this.todo.elements.findIndex((todoElement: TodoElement) => todoElement.id === element.id);
+  }
+
+
 }

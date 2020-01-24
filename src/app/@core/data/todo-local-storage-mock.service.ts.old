@@ -1,4 +1,4 @@
-import { Inject, Injectable } from "@angular/core";
+import { Inject, Injectable } from '@angular/core';
 import { TodoServiceInterface } from './todo-service.interface';
 import { Todo, TodoElement } from '@agh-app/model';
 import { Observable, BehaviorSubject } from 'rxjs';
@@ -63,23 +63,23 @@ export class TodoService implements TodoServiceInterface {
         return new BehaviorSubject<Todo[]>(this.currentTodoList);
     }
 
-    addTodoElement(todo: Todo, element: TodoElement): Observable<Todo> {
+    addTodoElement(todo: Todo, element: TodoElement): Observable<TodoElement> {
         let id = 0;
 
         if (todo.elements.length > 0) {
-            id = todo.elements[todo.elements.length - 1].id + 1
+            id = todo.elements[todo.elements.length - 1].id + 1;
         }
 
         this.currentTodoList[this.getTodoIndex(todo)].elements.push({
             id: id,
             title: element.title,
             done: false
-        })
+        });
 
 
         this.updateLocalStorage();
 
-        return new BehaviorSubject<Todo>(this.currentTodoList[this.getTodoIndex(todo)])
+        return new BehaviorSubject<Todo>(this.currentTodoList[this.getTodoIndex(todo)]);
     }
 
     removeTodoElement(todo: Todo, element: TodoElement): Observable<boolean> {
@@ -124,7 +124,7 @@ export class TodoService implements TodoServiceInterface {
     private getTodoElementIndex(todo: Todo, element: TodoElement): number {
         let todoIndex = this.getTodoIndex(todo);
 
-        let currentTodo = this.currentTodoList[todoIndex].elements.find((todoElement: TodoElement) => todoElement.id == element.id)
+        let currentTodo = this.currentTodoList[todoIndex].elements.find((todoElement: TodoElement) => todoElement.id === element.id)
 
         return this.currentTodoList[todoIndex].elements.indexOf(currentTodo);
     }

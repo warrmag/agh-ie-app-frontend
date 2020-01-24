@@ -25,10 +25,10 @@
       "@agh-app/model": [
         "src/app/@core/model/index.ts"
       ]
-    },
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true
-  },
+  }
 }

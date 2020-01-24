@@ -1,5 +1,5 @@
 :host {
-  margin: 1rem !important;
+  // margin: 1rem !important;
   display: block;
 }
 
@@ -8,4 +8,18 @@
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.button-toggle-sidenav {
+  margin-left: 1rem;
+}
+
+mat-drawer-container {
+  background-color: transparent;
+  min-height: 100vh;
+
+  mat-drawer,
+  mat-drawer-content {
+    padding: 1rem;
+  }
 }

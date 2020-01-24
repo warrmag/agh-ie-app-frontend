@@ -1,16 +1,21 @@
-import { ApiService } from './data'
-import { NgModule, Optional, SkipSelf, ModuleWithProviders } from '@angular/core'
-import { CommonModule } from '@angular/common'
+import { NgModule, Optional, SkipSelf, ModuleWithProviders } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { throwIfAlreadyLoaded } from './module-import-guard';
-import { TodoService } from './data/todo-local-storage-mock.service';
+import { HttpClientModule } from '@angular/common/http';
+import {
+    ApiService,
+    TodoService,
+    SidebarService
+} from '@agh-app/service'
 
 const DATA_SERVICES = [
     ApiService,
-    TodoService
-]
+    TodoService,
+    SidebarService
+];
 
 @NgModule({
-    imports: [CommonModule]
+    imports: [CommonModule, HttpClientModule]
 })
 export class CoreModule {
     constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
@@ -18,9 +23,9 @@ export class CoreModule {
     }
 
     static forRoot(): ModuleWithProviders {
-        return <ModuleWithProviders>{
+        return {
             ngModule: CoreModule,
             providers: [...DATA_SERVICES]
-        }
+        } as ModuleWithProviders;
     }
 }
