@@ -3,8 +3,8 @@ import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import { ApiService } from './api.service';
 import { map, distinctUntilChanged, catchError, concatMap } from 'rxjs/operators';
 import { SidebarServiceInterface } from './sidebar-service.interface';
-import { Category } from "../model/category.model";
-import { Todo } from '../model/todo.model';
+import { Category } from '@agh-app/model';
+import { Todo } from '@agh-app/model';
 import { TodoService } from './todo.service';
 import { PromiseType } from 'protractor/built/plugins';
 

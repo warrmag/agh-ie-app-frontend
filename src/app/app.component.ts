@@ -23,11 +23,12 @@ export class AppComponent {
   }
 
   addNewTodo() {
-    this.todoService.addTodo({
-      id: undefined,
-      title: '',
-      elements: []
-    }).subscribe();
+    console.log(this.sidebarService.currentCategory.pipe());
+    // this.todoService.addTodo({
+    //   id: undefined,
+    //   title: '',
+    //   elements: []
+    // }, this.sidebarService.currentCategory.subscribe()).subscribe();
   }
 
   toggleSidenav() {

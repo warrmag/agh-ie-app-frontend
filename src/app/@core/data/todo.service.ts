@@ -1,5 +1,5 @@
 import {Inject, Injectable} from '@angular/core';
-import { Todo, TodoElement } from '@agh-app/model';
+import {Category, Todo, TodoElement} from '@agh-app/model';
 import { Observable } from 'rxjs';
 import { ApiService } from './api.service';
 import { map } from 'rxjs/operators';
@@ -10,8 +10,8 @@ import { TodoServiceInterface } from './todo-service.interface';
 export class TodoService implements TodoServiceInterface {
     constructor(@Inject(ApiService) private apiService: ApiService) { }
 
-    public addTodo(todo: Todo): Observable<Todo> {
-        return this.apiService.post('/cards', todo).pipe(map(data => data));
+    public addTodo(todo: Todo, category: Category): Observable<Todo> {
+        return this.apiService.post('/categories/' + category.id + '/cards', todo).pipe(map(data => data));
     }
 
     public getTodo(todo: Todo): Observable<Todo> {

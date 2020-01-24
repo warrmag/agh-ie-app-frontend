@@ -1,8 +1,8 @@
-import { Todo, TodoElement } from '@agh-app/model';
+import {Category, Todo, TodoElement} from '@agh-app/model';
 import { Observable } from 'rxjs';
 
 export interface TodoServiceInterface {
-    addTodo(todo: Todo): Observable<Todo>
+    addTodo(todo: Todo, category: Category): Observable<Todo>
     getTodo(todo: Todo): Observable<Todo>
     updateTodo(todo: Todo): Observable<Todo>
     removeTodo(todo: Todo): Observable<boolean>
