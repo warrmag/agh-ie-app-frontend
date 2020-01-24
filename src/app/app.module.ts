@@ -8,7 +8,7 @@ import { CoreModule } from './@core/core.module';
 import { StorageServiceModule } from 'ngx-webstorage-service';
 import { CommonModule } from '@angular/common';
 
-import { MatCardModule, MatInputModule, MatButtonModule, MatIconModule, MatCheckboxModule, MatListModule, MatSidenavModule, MatRadioModule } from '@angular/material';
+import { MatCardModule, MatInputModule, MatButtonModule, MatIconModule, MatCheckboxModule, MatListModule, MatSidenavModule, MatRadioModule, MatMenuModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 
 // AGH App components
@@ -23,7 +23,8 @@ const MATERIAL_MODULES = [
   MatCheckboxModule,
   MatListModule,
   MatSidenavModule,
-  MatRadioModule
+  MatRadioModule,
+  MatMenuModule
 ]
 
 const ANGULAR_MODULES = [

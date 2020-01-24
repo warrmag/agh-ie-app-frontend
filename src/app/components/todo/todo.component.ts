@@ -1,24 +1,27 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Todo, TodoElement } from '@agh-app/model';
 import { TodoService } from '@agh-app/service';
-import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'agh-app-todo',
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.scss']
 })
-export class TodoComponent implements OnInit {
+export class TodoComponent {
   @Input()
   todo: Todo;
 
+  @Output()
+  cardDeleted: EventEmitter<boolean> = new EventEmitter();
+
   constructor(private todoService: TodoService) { }
 
-  ngOnInit() {
-  }
-
   removeTodo() {
-    this.todoService.removeTodo(this.todo).subscribe();
+    this.todoService.removeTodo(this.todo).subscribe(
+      () => {
+        this.cardDeleted.emit(true);
+      }
+    );
   }
 
   updateTodo() {
@@ -33,7 +36,7 @@ export class TodoComponent implements OnInit {
         id: undefined,
         title: event.target.value,
         done: false
-      }).subscribe((data: TodoElement) => { this.todo.elements.push(data) }); // Sewo pokaż jak naprawić żeby linter nie wkurwiał
+      }).subscribe((data: TodoElement) => { this.todo.elements.push(data) });
 
       event.target.value = '';
     }
@@ -57,4 +60,6 @@ export class TodoComponent implements OnInit {
   private getTodoElementIndex(todo: Todo, element: TodoElement) {
     return this.todo.elements.findIndex((todoElement: TodoElement) => todoElement.id === element.id);
   }
+
+
 }
