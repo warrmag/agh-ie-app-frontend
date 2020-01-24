@@ -1,0 +1,6 @@
+<mat-radio-group [(ngModel)]="selectedCategory" (change)="selectCategory()">
+  <mat-radio-button [value]="{id: 'all'}">
+    all
+  </mat-radio-button>
+  <mat-radio-button *ngFor="let category of categories" [value]="category">{{category.title}}</mat-radio-button>
+</mat-radio-group>

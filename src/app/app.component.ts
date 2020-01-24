@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { TodoService } from './@core/data/todo-local-storage-mock.service';
-import { Todo } from '@agh-app/model';
+import { Todo, Category } from '@agh-app/model';
+import { SidebarService, TodoService } from '@agh-app/service';
 
 @Component({
   selector: 'app-root',
@@ -8,23 +8,49 @@ import { Todo } from '@agh-app/model';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(private todoService: TodoService) { }
+  constructor(private sidebarService: SidebarService, private todoService: TodoService) { }
 
   todos: Todo[] = [];
+  categories: Category[] = [];
+
+  sidenavOpened: boolean = false;
 
   ngOnInit() {
-    this.todoService.getAllTodo().subscribe(
+    this.sidebarService.getCardsByCategory().subscribe(
       (todos: Todo[]) => {
         this.todos = todos;
+      }
+    );
+
+    this.sidebarService.getAllCategories().subscribe(
+      (categories: Category[]) => {
+        this.categories = categories;
       }
     )
   }
 
-  addNewTodo() {
-    this.todoService.addTodo({
+  addNewTodo(category: Category) {
+    this.sidebarService.addCartToCategory({
       id: undefined,
-      title: '',
-      elements: []
-    }).subscribe()
+      title: 'No title'
+    }, category).subscribe(
+      () => {
+        this.sidebarService.setCurrentCategory(category)
+      }
+    );
+  }
+
+  toggleSidenav() {
+    this.sidenavOpened = !this.sidenavOpened;
+  }
+
+  closeSidenav() {
+    this.sidenavOpened = false;
+  }
+
+  removeCard(card: Todo) {
+    this.todos = this.todos.filter(
+      todo => todo.id !== card.id
+    )
   }
 }

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --host 0.0.0.0 --poll 500",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -14,7 +14,7 @@
     "@angular/animations": "^8.2.13",
     "@angular/cdk": "~8.2.3",
     "@angular/common": "~8.2.0",
-    "@angular/compiler": "~8.2.0",
+    "@angular/compiler": "~8.2.14",
     "@angular/core": "~8.2.0",
     "@angular/forms": "~8.2.0",
     "@angular/material": "^8.2.3",
@@ -24,12 +24,12 @@
     "ngx-webstorage-service": "^4.1.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
-    "zone.js": "~0.9.1"
+    "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.802.0",
+    "@angular-devkit/build-angular": "*",
     "@angular/cli": "~8.2.0",
-    "@angular/compiler-cli": "~8.2.0",
+    "@angular/compiler-cli": "~8.2.14",
     "@angular/language-service": "~8.2.0",
     "@types/node": "~8.9.4",
     "@types/jasmine": "~3.3.8",
@@ -45,6 +45,6 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.5.3"
+    "typescript": "3.5.3"
   }
 }
